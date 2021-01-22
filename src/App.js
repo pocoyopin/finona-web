@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import './App.css';
 
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+import Home from './components/Home';
+import Product from './components/Product';
+import Order from './components/Order';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const theme = createMuiTheme({
+        palette: {
+            primary: {
+                main: '#f48fb1'
+            },
+            secondary: {
+                main: '#4dd0e1'
+            }
+        }
+    })
+
+    return (
+        <ThemeProvider theme={theme}>
+            <div className="App">
+                <BrowserRouter>
+                    <div>
+                        <Route
+                            path="/"
+                            render={({location}) => (
+                                <>
+                                    <Header location={location} />
+                                    <Switch>
+                                        <Route path="/" component={Home} exact />
+                                        <Route path="/product" component={Product} exact />
+                                        <Route path="/order" component={Order} exact />
+                                    </Switch>
+                                </>
+                            )}
+                        />
+                    </div>
+                </BrowserRouter>      
+                <Footer />
+            </div>
+        </ThemeProvider>
+    );
+};
 
 export default App;
