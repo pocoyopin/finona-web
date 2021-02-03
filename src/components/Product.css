@@ -1,0 +1,15 @@
+.title {
+    text-align: left;
+}
+
+.subtitle {
+    text-align: left;
+    padding-bottom: 20px;
+    color: #888888;
+}
+
+.grid-container {
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-grow: 1; */
+}

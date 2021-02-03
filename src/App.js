@@ -34,11 +34,13 @@ function App() {
                             render={({location}) => (
                                 <>
                                     <Header location={location} />
-                                    <Switch>
-                                        <Route path="/" component={Home} exact />
-                                        <Route path="/product" component={Product} exact />
-                                        <Route path="/order" component={Order} exact />
-                                    </Switch>
+                                    <div className='body'>
+                                        <Switch>
+                                            <Route path="/" component={Home} exact />
+                                            <Route path="/product" component={Product} exact />
+                                            <Route path="/order" component={Order} exact />
+                                        </Switch>
+                                    </div>
                                 </>
                             )}
                         />
